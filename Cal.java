@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Cal{
-
+//Yinka and Edmund
 	// addition
 	public static float add(float a, float b){
 
@@ -70,18 +70,18 @@ public class Cal{
 		int num1, num2;
 		Scanner in = new Scanner(System.in);
 
-		 System.out.println("Welcome!\n What do you want to do?\n 1.Add 2.Subtract 3.Multiply\n 4.Divide 5.Modulus 6.Average\n 7.Squareroot	8.Power");
+		 System.out.println("Enter number to\n 1.Add 2.Subtract 3.Multiply\n 4.Divide 5.Modulus 6.Average\n 7.Squareroot	8.Power");
 
 		 int choice = Integer.parseInt(in.nextLine());
 		 if (choice==7){
-		 	System.out.println("Enter Number to Find Square Root Of...: ");
+		 	System.out.println("Enter Number to Find Square Root Of: ");
 		 	num1 = Integer.parseInt(in.nextLine());
 		 	squareRoot(num1);
 		 }
 		 else{
-		 	System.out.println("Enter First Number... ");
+		 	System.out.println("Enter First Number: ");
 		 	num1 = Integer.parseInt(in.nextLine());
-		 	System.out.println("Enter Second Number... ");
+		 	System.out.println("Enter Second Number: ");
 		 	num2 = Integer.parseInt(in.nextLine());
 
 		 	switch(choice){
