@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Cal{
+public class Calculator{
 //Yinka and Edmund
 	// addition
 	public static float add(float a, float b){
