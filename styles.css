@@ -1343,7 +1343,12 @@ html.js .about-statement .word > span { transform: translateY(110%); }
 .case-figure { margin-top: clamp(2rem, 5vh, 3.25rem); }
 .case-figure img {
   display: block;
-  width: 100%;
+  /* Render at natural size, capped by the container — never upscale
+     (Medium's CDN won't serve larger than the original, so stretching
+     small sources full-width is what made them blurry). */
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
   height: auto;
   border-radius: 14px;
   border: 1px solid var(--line);
@@ -1369,7 +1374,9 @@ html.js .about-statement .word > span { transform: translateY(110%); }
 .artwork-wrap { max-width: 980px; margin: clamp(2rem, 5vh, 3.25rem) auto 0; }
 .artwork-wrap img {
   display: block;
-  width: 100%;
+  width: auto;
+  max-width: 100%;
+  margin-inline: auto;
   height: auto;
   border-radius: 14px;
   border: 1px solid var(--line);
