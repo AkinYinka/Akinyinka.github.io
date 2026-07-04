@@ -93,12 +93,14 @@
         ease: "power3.out",
       });
     }
-    tl.to(".hero-title .line-inner", {
-      y: 0,
-      duration: 1.1,
-      ease: "power4.out",
-      stagger: 0.12,
-    }, "-=0.45");
+    if (document.querySelector(".hero-title .line-inner")) {
+      tl.to(".hero-title .line-inner", {
+        y: 0,
+        duration: 1.1,
+        ease: "power4.out",
+        stagger: 0.12,
+      }, "-=0.45");
+    }
     tl.to("[data-hero-fade]", {
       opacity: 1,
       duration: 0.9,
