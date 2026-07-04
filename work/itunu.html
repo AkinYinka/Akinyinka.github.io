@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Itunu App 1.0 — Case Study — Yinka Akinbobola</title>
+  <meta name="description" content="How I redesigned crisis-support intake for Mentally Aware Nigeria Initiative — from Google Forms and 5-day waits to a counsellor app, WhatsApp bot and admin dashboard." />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../styles.css?v=8" />
+</head>
+<body>
+
+  <div class="read-progress" aria-hidden="true"><span class="read-progress-fill"></span></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor-dot"></div>
+  <div class="cursor-ring" id="cursor-ring"></div>
+
+  <!-- Header -->
+  <header class="site-head">
+    <a href="../index.html" class="brand" data-hover>YA<span class="brand-dot">.</span></a>
+    <nav class="site-nav" aria-label="Main">
+      <a href="../index.html#projects" data-hover>Projects</a>
+      <a href="../index.html#process" data-hover>Process</a>
+      <a href="../index.html#experience" data-hover>Experience</a>
+      <a href="../index.html#references" data-hover>References</a>
+    </nav>
+    <a href="mailto:yinka.akin@gmail.com" class="pill" data-hover data-magnetic>
+      <span class="pill-dot" aria-hidden="true"></span>
+      Let's talk!
+    </a>
+  </header>
+
+  <main id="top">
+
+    <!-- Case hero -->
+    <section class="case-hero">
+      <div class="case-hero-content">
+        <p class="hero-eyebrow" data-hero-fade>
+          <span>Case study 01</span>
+          <span class="hero-eyebrow-sep" aria-hidden="true"></span>
+          <span>2023 · Lead Product Designer · Mentally Aware Nigeria Initiative</span>
+        </p>
+        <h1 class="hero-title">
+          <span class="line"><span class="line-inner">ITUNU</span></span>
+          <span class="line line--outline"><span class="line-inner">APP 1.0</span></span>
+        </h1>
+        <div class="case-hero-sub" data-hero-fade>
+          <p class="case-lede">Crisis-support intake ran on Google Forms, with waits stretching from 3 hours to 5 days. I designed a counsellor case-management app, a WhatsApp onboarding bot and an admin dashboard — so people in crisis get help in minutes.</p>
+          <a class="case-source" href="https://medium.com/@thatakinyinka/itunu-app-1-0-8607a9908950" target="_blank" rel="noopener" data-hover data-magnetic>Read on Medium ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- At a glance -->
+    <section class="section" style="padding-top: clamp(2.5rem, 6vh, 4rem);">
+      <div class="glance" data-reveal>
+        <div class="glance-cell">
+          <h3>The problem</h3>
+          <p>MANI — the largest provider of crisis services in Nigeria — relied on <strong>manual Google Forms intake</strong>, creating bottlenecks that delayed mental-health support by up to <strong>5 days</strong>.</p>
+        </div>
+        <div class="glance-cell">
+          <h3>The solution</h3>
+          <p>A three-part system: a <strong>case-management app</strong> for counsellors, an <strong>interactive WhatsApp bot</strong> for client onboarding, and a <strong>centralised admin dashboard</strong>.</p>
+        </div>
+        <div class="glance-cell">
+          <h3>My role</h3>
+          <p><strong>Lead Product Designer</strong> — research, ideation facilitation, flows, wireframes, design system, hi-fi prototypes and usability testing.</p>
+        </div>
+        <div class="glance-cell">
+          <h3>Timeline</h3>
+          <p><strong>~4 weeks</strong> — 1 week research, 1 day ideation, 1 week prototyping, 1 week testing &amp; iteration.</p>
+        </div>
+      </div>
+      <div class="phase-strip" data-reveal>
+        <div class="phase"><span class="phase-name">Research</span><span class="phase-time">1 week</span></div>
+        <div class="phase"><span class="phase-name">Ideation</span><span class="phase-time">1 day</span></div>
+        <div class="phase"><span class="phase-name">Prototyping</span><span class="phase-time">1 week</span></div>
+        <div class="phase"><span class="phase-name">Testing &amp; iteration</span><span class="phase-time">1 week</span></div>
+      </div>
+    </section>
+
+    <!-- Context -->
+    <section class="section case-body">
+      <div class="section-head" data-reveal>
+        <span class="section-index">01</span>
+        <span class="section-label">Context &amp; challenge</span>
+      </div>
+      <p data-reveal>Mentally Aware Nigeria Initiative (MANI) offers mental-health counselling through WhatsApp, connecting skilled counsellors with those in need. Demand was escalating fast — but clients submitted their cases through Google Forms, and with a limited number of counsellors available, this manual process resulted in frustrating delays.</p>
+      <p data-reveal>Wait times stretched <strong>from 3 hours to up to 5 days</strong>. For a person reaching out in crisis, that gap isn't an inconvenience — it can be the difference between getting help and giving up. The challenge: rebuild the intake and case-management experience so support arrives in minutes, while giving MANI's team the structure and data they'd never had.</p>
+      <figure class="case-figure" data-reveal>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*nS1Vkgoc0UrzNIKgYpYl6w.png" alt="Itunu App 1.0 case study cover" loading="lazy" referrerpolicy="no-referrer" />
+        <figcaption>Itunu 1.0 — designed for MANI</figcaption>
+      </figure>
+    </section>
+
+    <!-- Research -->
+    <section class="section case-body" style="padding-top: 0;">
+      <div class="section-head" data-reveal>
+        <span class="section-index">02</span>
+        <span class="section-label">User research</span>
+      </div>
+      <p data-reveal>I dedicated a week to understanding every side of the service: <strong>10 counsellor interviews</strong> and <strong>50 client surveys</strong>, alongside sessions with MANI's in-house team. The research shaped detailed personas and <strong>three customer journey maps</strong> — one per stakeholder — so each group's pains and emotions stayed visible throughout the project.</p>
+      <div class="figure-grid" data-reveal>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*ezUC0ZSeYBj0v38XhV9HCA.png" alt="Personas for counsellors and clients" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Personas</figcaption>
+        </figure>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*qgIzfS-hqTt0Fb9oeuwB0A.png" alt="Client customer journey map" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Client's journey map</figcaption>
+        </figure>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*-uw55dEHdcCS8Mtg4VWy7Q.png" alt="Counsellor customer journey map" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Counsellor's journey map</figcaption>
+        </figure>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*G_JGxFwQQo43K6g1_BqYfA.png" alt="Admin customer journey map" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Admin's journey map — MANI's in-house team</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- HMW -->
+    <section class="section case-body" style="padding-top: 0;">
+      <div class="section-head" data-reveal>
+        <span class="section-index">03</span>
+        <span class="section-label">Framing the problem</span>
+      </div>
+      <p data-reveal>The research converged on three actionable How-Might-We questions:</p>
+      <div class="hmw-grid">
+        <div class="hmw-card" data-reveal>
+          <span class="hmw-num">HMW 01</span>
+          <p>How might we decrease client wait times and improve scheduling efficiency at MANI?</p>
+        </div>
+        <div class="hmw-card" data-reveal>
+          <span class="hmw-num">HMW 02</span>
+          <p>How might we implement an automated case-management system that enhances efficiency and client privacy?</p>
+        </div>
+        <div class="hmw-card" data-reveal>
+          <span class="hmw-num">HMW 03</span>
+          <p>How might we effectively gather actionable data from counselling sessions to drive improvements?</p>
+        </div>
+      </div>
+      <figure class="case-figure" data-reveal>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*eH7IQga5J4i7DdRyyVhfSg.png" alt="How might we questions" loading="lazy" referrerpolicy="no-referrer" />
+        <figcaption>HMW questions</figcaption>
+      </figure>
+    </section>
+
+    <!-- Ideation -->
+    <section class="section case-body" style="padding-top: 0;">
+      <div class="section-head" data-reveal>
+        <span class="section-index">04</span>
+        <span class="section-label">Ideation</span>
+      </div>
+      <p data-reveal>I facilitated a <strong>10-for-10 sketching workshop</strong> with the team — rapid divergence, then dot-voting to converge on the strongest concepts. The winning direction became the three-part solution: counsellor app, WhatsApp onboarding bot, and admin dashboard.</p>
+      <figure class="case-figure" data-reveal>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*BzOz5VGyZHGsG9guvwgHBQ.png" alt="10 for 10 ideation voting results" loading="lazy" referrerpolicy="no-referrer" />
+        <figcaption>10-for-10 — visualising the voting results</figcaption>
+      </figure>
+    </section>
+
+    <!-- Flows & wireframes -->
+    <section class="section case-body" style="padding-top: 0;">
+      <div class="section-head" data-reveal>
+        <span class="section-index">05</span>
+        <span class="section-label">Flows &amp; wireframes</span>
+      </div>
+      <p data-reveal>Three user flows — client, counsellor and admin — mapped every step from first message to closed case, before a full set of low-fidelity wireframes locked the layouts.</p>
+      <div class="figure-grid" data-reveal>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*WRQCM6T_XnBNWPBDNp3Syg.png" alt="Client user flow" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Client user flow</figcaption>
+        </figure>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*vKrXQIBoKgQtZcTSO3U5FA.png" alt="Counsellor user flow" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Counsellor user flow</figcaption>
+        </figure>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*44Ync4fzDcjNZQHyW43Z4A.png" alt="Admin user flow" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Admin user flow</figcaption>
+        </figure>
+      </div>
+      <figure class="case-figure" data-reveal>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*OJenElAZm4rB9uCF0Hb6Sw.png" alt="Wireframes" loading="lazy" referrerpolicy="no-referrer" />
+        <figcaption>Wireframes</figcaption>
+      </figure>
+    </section>
+
+    <!-- Design system -->
+    <section class="section case-body" style="padding-top: 0;">
+      <div class="section-head" data-reveal>
+        <span class="section-index">06</span>
+        <span class="section-label">Design system</span>
+      </div>
+      <p data-reveal>A style guide and componentised UI kit — dashboard components, mobile components and a custom icon set — so the system outlives the file and MANI's future designers can build consistently.</p>
+      <figure class="case-figure" data-reveal>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*kqPwDLAV-zfHNvFHXwkmfg.png" alt="Style guide" loading="lazy" referrerpolicy="no-referrer" />
+        <figcaption>Style guide</figcaption>
+      </figure>
+      <div class="figure-grid" data-reveal>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*4RNn6J4CzmSFJPNmouWquA.png" alt="Dashboard components" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Dashboard components</figcaption>
+        </figure>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*MTqmG1HPQO2Lx_cauZABPg.png" alt="Mobile components" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Mobile components</figcaption>
+        </figure>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*4rQic8u0lK_iZs-__p8m2g.png" alt="Icon set" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Icon set</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Hi-fi & testing -->
+    <section class="section case-body" style="padding-top: 0;">
+      <div class="section-head" data-reveal>
+        <span class="section-index">07</span>
+        <span class="section-label">Prototype &amp; testing</span>
+      </div>
+      <p data-reveal>High-fidelity prototypes for the mobile app and admin dashboard went into <strong>usability testing with real counsellors and clients</strong>. Findings fed a structured iteration pass — refining navigation, states and copy before handoff.</p>
+      <div class="figure-grid" data-reveal>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*ZzE8LBoo7pjhN2rrXrfGNw.png" alt="High-fidelity mobile app" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Mobile app</figcaption>
+        </figure>
+        <figure class="case-figure">
+          <img src="https://miro.medium.com/v2/resize:fit:1400/1*R35vMX9aCwQA6QHGiEnHAw.png" alt="Admin dashboard" loading="lazy" referrerpolicy="no-referrer" />
+          <figcaption>Admin dashboard</figcaption>
+        </figure>
+      </div>
+      <figure class="case-figure" data-reveal>
+        <img src="https://miro.medium.com/v2/resize:fit:1400/1*oP2Q8xn6yxQk4F9dNrlRAw.png" alt="Usability test report" loading="lazy" referrerpolicy="no-referrer" />
+        <figcaption>Usability test report</figcaption>
+      </figure>
+    </section>
+
+    <!-- Takeaway -->
+    <section class="section case-body" style="padding-top: 0;">
+      <div class="section-head" data-reveal>
+        <span class="section-index">08</span>
+        <span class="section-label">Takeaway</span>
+      </div>
+      <blockquote class="case-quote" data-reveal>
+        <p>"Through this case study, I showcased my ability to conduct comprehensive user research, facilitate ideation workshops, and develop solutions that truly resonate with users."</p>
+        <cite>— My expert takeaway, from the full write-up</cite>
+      </blockquote>
+    </section>
+
+  </main>
+
+  <!-- Next case -->
+  <section class="case-next">
+    <p class="case-next-kicker">Next case study</p>
+    <a href="govote.html" class="case-next-link" data-hover>GoVote →</a>
+    <br />
+    <a href="../index.html#projects" class="case-next-back" data-hover>← All projects</a>
+  </section>
+
+  <footer class="site-foot">
+    <span>2026 © — Made with ♡ by Yinka Akinbobola</span>
+    <span class="foot-loc">United Kingdom — GMT</span>
+    <a href="../index.html" data-hover>Back home ↑</a>
+  </footer>
+
+  <!-- Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="../main.js?v=8"></script>
+</body>
+</html>
