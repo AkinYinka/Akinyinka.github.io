@@ -1353,6 +1353,9 @@ html.js .about-statement .word > span { transform: translateY(110%); }
   border-radius: 14px;
   border: 1px solid var(--line);
   background: var(--bg-soft);
+  /* placeholder footprint before load — a zero-width box would
+     never intersect the viewport and lazy-loading would deadlock */
+  min-width: min(240px, 100%);
   min-height: 120px;
 }
 .case-figure figcaption {
@@ -1381,6 +1384,8 @@ html.js .about-statement .word > span { transform: translateY(110%); }
   border-radius: 14px;
   border: 1px solid var(--line);
   background: var(--bg-soft);
+  min-width: min(240px, 100%);
+  min-height: 120px;
 }
 
 /* HMW cards */
