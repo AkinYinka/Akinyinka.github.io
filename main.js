@@ -79,8 +79,9 @@
   /* ----------------------------------------------------------
      Preloader + hero intro
      ---------------------------------------------------------- */
-  var countEl = document.getElementById("preloader-count");
-  var counter = { value: 0 };
+  var ddPaths = gsap.utils.toArray(".dd-path");
+  var ddDots = gsap.utils.toArray(".dd-dot");
+  var ddLabels = gsap.utils.toArray(".dd-labels span");
 
   function heroIntro() {
     var tl = gsap.timeline();
@@ -112,14 +113,46 @@
 
   if (preloaderEl) {
     var introTl = gsap.timeline();
-    introTl.to(counter, {
-      value: 100,
-      duration: reducedMotion ? 0.01 : 1.4,
-      ease: "power2.inOut",
-      onUpdate: function () {
-        if (countEl) countEl.textContent = String(Math.round(counter.value)).padStart(2, "0");
-      },
-    });
+    if (ddPaths.length) {
+      // Double Diamond draw-in: Discover→Define, then Develop→Deliver.
+      ddPaths.forEach(function (p) {
+        var len = p.getTotalLength();
+        p.style.strokeDasharray = len;
+        p.style.strokeDashoffset = len;
+      });
+      gsap.set(ddDots, { scale: 0, transformOrigin: "center" });
+      gsap.set(ddLabels, { opacity: 0, y: 8 });
+      gsap.set(".preloader-name", { opacity: 0 });
+
+      introTl.to(ddPaths[0], {
+        strokeDashoffset: 0,
+        duration: reducedMotion ? 0.01 : 0.65,
+        ease: "power2.inOut",
+      });
+      introTl.to(ddPaths[1], {
+        strokeDashoffset: 0,
+        duration: reducedMotion ? 0.01 : 0.65,
+        ease: "power2.inOut",
+      }, "-=0.12");
+      introTl.to(ddDots, {
+        scale: 1,
+        duration: reducedMotion ? 0.01 : 0.3,
+        ease: "back.out(2.5)",
+        stagger: 0.09,
+      }, "-=0.55");
+      introTl.to(ddLabels, {
+        opacity: 1,
+        y: 0,
+        duration: reducedMotion ? 0.01 : 0.35,
+        ease: "power2.out",
+        stagger: 0.07,
+      }, "-=0.6");
+      introTl.to(".preloader-name", {
+        opacity: 1,
+        duration: reducedMotion ? 0.01 : 0.35,
+      }, "-=0.3");
+      introTl.to({}, { duration: reducedMotion ? 0 : 0.3 }); // hold the mark
+    }
     introTl.to(preloaderEl, {
       yPercent: -100,
       duration: reducedMotion ? 0.01 : 0.8,
