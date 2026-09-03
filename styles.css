@@ -653,6 +653,7 @@ html.js .about-statement .word > span { transform: translateY(110%); }
 .work-visual--govote   { background: linear-gradient(140deg, #dcf5df 0%, #a8e2b0 60%, #4caf6d 100%); }
 .work-visual--guardian { background: linear-gradient(140deg, #fdf3df 0%, #f3ddb0 60%, #d9b26a 100%); }
 .work-visual--sprint   { background: linear-gradient(140deg, #ffe9d6 0%, #ffc9a3 60%, #ff8c5a 100%); }
+.work-visual--abi      { background: linear-gradient(140deg, #2c3c60 0%, #16203a 55%, #080d18 100%); }
 
 /* -- mock: phone with chat (Itunu) -- */
 .mock-phone {
@@ -814,6 +815,77 @@ html.js .about-statement .word > span { transform: translateY(110%); }
 .work-link:hover .mock-sticky:nth-child(2) { transform: rotate(6deg) translateY(-5px); }
 .work-link:hover .mock-sticky:nth-child(3) { transform: rotate(-2deg) translateY(-3px); }
 .work-link:hover .mock-sticky:nth-child(4) { transform: rotate(-6deg) translateY(-6px); }
+
+/* -- mock: betslip (ABI Modernization) -- */
+.mock-slip {
+  width: 74%;
+  background: #131d33;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(4, 8, 18, 0.55);
+  padding: 0.7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.work-link:hover .mock-slip { transform: translateY(-6px); }
+
+.mock-slip-tabs { display: flex; gap: 0.3rem; }
+.mock-slip-tabs i {
+  font-style: normal;
+  font-size: clamp(0.48rem, 0.8vw, 0.58rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #7d8aa6;
+  background: #1d2942;
+  border-radius: 4px;
+  padding: 0.2rem 0.4rem;
+}
+.mock-slip-tabs i.is-on { background: #d81f3f; color: #fff; }
+
+.mock-slip-row {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #0e1729;
+  border-radius: 5px;
+  padding: 0.32rem 0.4rem;
+}
+.mock-slip-row b { flex: 1; height: 5px; border-radius: 3px; background: #33405c; }
+.mock-slip-row.is-live b { background: #d81f3f; opacity: 0.75; }
+.mock-slip-row em {
+  font-style: normal;
+  font-size: clamp(0.48rem, 0.8vw, 0.58rem);
+  color: #c3cde0;
+  background: #1e2b46;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  padding: 0.14rem 0.3rem;
+}
+
+.mock-slip-foot {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.15rem;
+}
+.mock-slip-foot i {
+  font-style: normal;
+  font-size: clamp(0.46rem, 0.78vw, 0.56rem);
+  letter-spacing: 0.06em;
+  color: #6ee7a0;
+}
+.mock-slip-bet {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(0.5rem, 0.8vw, 0.6rem);
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: #d81f3f;
+  border-radius: 5px;
+  padding: 0.24rem 0.7rem;
+}
 
 /* -- project info -- */
 .work-topline {
@@ -1553,11 +1625,6 @@ html.js .about-statement .word > span { transform: translateY(110%); }
   }
   .pill-dot, .scroll-cue-line { animation: none; }
   * { transition-duration: 0.01ms !important; }
-}
-
-/* Homepage card visual */
-.work-visual--abi {
-  background: #232838 url("assets/abi/abi-cover.jpg") center / cover no-repeat;
 }
 
 /* Two-up grid for the "before" screens — larger, and pairs cleanly */
