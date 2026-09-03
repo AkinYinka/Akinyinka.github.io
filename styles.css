@@ -1554,3 +1554,14 @@ html.js .about-statement .word > span { transform: translateY(110%); }
   .pill-dot, .scroll-cue-line { animation: none; }
   * { transition-duration: 0.01ms !important; }
 }
+
+/* Homepage card visual */
+.work-visual--abi {
+  background: #232838 url("assets/abi/abi-cover.jpg") center / cover no-repeat;
+}
+
+/* Two-up grid for the "before" screens — larger, and pairs cleanly */
+.figure-grid--wide { grid-template-columns: repeat(auto-fit, minmax(420px, 1fr)); }
+@media (max-width: 620px) {
+  .figure-grid--wide { grid-template-columns: 1fr; }
+}
