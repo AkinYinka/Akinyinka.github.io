@@ -111,7 +111,13 @@
     return tl;
   }
 
-  if (preloaderEl) {
+  var introSeen = document.documentElement.classList.contains("intro-seen");
+  if (preloaderEl && introSeen) {
+    preloaderEl.style.display = "none";
+    preloaderEl = null;
+    heroIntro();
+  } else if (preloaderEl) {
+    try { sessionStorage.setItem("ya-intro", "1"); } catch (e) {}
     var introTl = gsap.timeline();
     if (ddPaths.length) {
       // Double Diamond draw-in: Discover→Define, then Develop→Deliver.
@@ -126,42 +132,50 @@
 
       introTl.to(ddPaths[0], {
         strokeDashoffset: 0,
-        duration: reducedMotion ? 0.01 : 0.65,
+        duration: 0.36,
         ease: "power2.inOut",
       });
       introTl.to(ddPaths[1], {
         strokeDashoffset: 0,
-        duration: reducedMotion ? 0.01 : 0.65,
+        duration: 0.36,
         ease: "power2.inOut",
-      }, "-=0.12");
+      }, "-=0.06");
       introTl.to(ddDots, {
         scale: 1,
-        duration: reducedMotion ? 0.01 : 0.3,
+        duration: 0.2,
         ease: "back.out(2.5)",
-        stagger: 0.09,
-      }, "-=0.55");
+        stagger: 0.05,
+      }, "-=0.35");
       introTl.to(ddLabels, {
         opacity: 1,
         y: 0,
-        duration: reducedMotion ? 0.01 : 0.35,
+        duration: 0.22,
         ease: "power2.out",
-        stagger: 0.07,
-      }, "-=0.6");
+        stagger: 0.04,
+      }, "-=0.4");
       introTl.to(".preloader-name", {
         opacity: 1,
-        duration: reducedMotion ? 0.01 : 0.35,
-      }, "-=0.3");
-      introTl.to({}, { duration: reducedMotion ? 0 : 0.3 }); // hold the mark
+        duration: 0.2,
+      }, "-=0.2");
+      introTl.to({}, { duration: 0.1 }); // brief hold
     }
     introTl.to(preloaderEl, {
       yPercent: -100,
-      duration: reducedMotion ? 0.01 : 0.8,
+      duration: 0.5,
       ease: "power4.inOut",
       onComplete: function () {
         if (preloaderEl) preloaderEl.style.display = "none";
       },
     });
-    introTl.add(heroIntro(), "-=0.35");
+    introTl.add(heroIntro(), "-=0.3");
+    // Any click or key skips straight to the page.
+    var skipIntro = function () {
+      introTl.progress(1);
+      window.removeEventListener("pointerdown", skipIntro);
+      window.removeEventListener("keydown", skipIntro);
+    };
+    window.addEventListener("pointerdown", skipIntro);
+    window.addEventListener("keydown", skipIntro);
   } else {
     // Case pages have no preloader — play the hero intro immediately.
     heroIntro();
@@ -181,7 +195,63 @@
       gsap.set(".hero-title .line-inner", { y: 0 });
       gsap.set("[data-hero-fade]", { opacity: 1 });
     }
-  }, 5000);
+  }, 2500);
+
+  /* ----------------------------------------------------------
+     Nav: highlight the section in view
+     ---------------------------------------------------------- */
+  var navLinks = Array.prototype.filter.call(
+    document.querySelectorAll('.site-nav a[href^="#"]'),
+    function (a) { return document.querySelector(a.getAttribute("href")); }
+  );
+  if (navLinks.length) {
+    var navEl = document.querySelector(".site-nav");
+    navEl.classList.add("has-spy");
+    var spyTicking = false;
+    var updateSpy = function () {
+      spyTicking = false;
+      var line = window.innerHeight * 0.35;
+      var current = null;
+      navLinks.forEach(function (a) {
+        var r = document.querySelector(a.getAttribute("href")).getBoundingClientRect();
+        if (r.top <= line && r.bottom > line) current = a;
+      });
+      navLinks.forEach(function (a) {
+        var on = a === current;
+        a.classList.toggle("is-active", on);
+        if (on) a.setAttribute("aria-current", "true");
+        else a.removeAttribute("aria-current");
+      });
+    };
+    var requestSpy = function () {
+      if (!spyTicking) { spyTicking = true; requestAnimationFrame(updateSpy); }
+    };
+    window.addEventListener("scroll", requestSpy, { passive: true });
+    window.addEventListener("resize", requestSpy);
+    if (lenis) lenis.on("scroll", requestSpy);
+    updateSpy();
+  }
+
+  /* ----------------------------------------------------------
+     Copy email (mailto fails silently without a mail client)
+     ---------------------------------------------------------- */
+  document.querySelectorAll("[data-copy]").forEach(function (btn) {
+    var label = btn.textContent;
+    var status = document.getElementById("copy-status");
+    btn.addEventListener("click", function () {
+      var value = btn.getAttribute("data-copy");
+      var done = function (msg) {
+        btn.textContent = msg;
+        if (status) status.textContent = msg === "Copied" ? "Email address copied" : "";
+        setTimeout(function () { btn.textContent = label; }, 2200);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(function () { done("Copied"); }, function () { done(value); });
+      } else {
+        done(value);
+      }
+    });
+  });
 
   /* ----------------------------------------------------------
      Reading progress (case pages)
@@ -196,27 +266,6 @@
     window.addEventListener("scroll", updateProg, { passive: true });
     if (lenis) lenis.on("scroll", updateProg);
     updateProg();
-  }
-
-  /* ----------------------------------------------------------
-     Rotating hero roles
-     ---------------------------------------------------------- */
-  var roles = gsap.utils.toArray(".hero-role");
-  if (roles.length > 1 && !reducedMotion) {
-    var current = 0;
-    gsap.set(roles, { autoAlpha: 0, y: 14 });
-    gsap.set(roles[0], { autoAlpha: 1, y: 0 });
-    roles.forEach(function (r) { r.classList.remove("is-active"); });
-    roles[0].classList.add("is-active");
-
-    setInterval(function () {
-      var next = (current + 1) % roles.length;
-      gsap.to(roles[current], { autoAlpha: 0, y: -14, duration: 0.5, ease: "power2.in" });
-      gsap.fromTo(roles[next],
-        { autoAlpha: 0, y: 14 },
-        { autoAlpha: 1, y: 0, duration: 0.6, ease: "power2.out", delay: 0.35 });
-      current = next;
-    }, 4000);
   }
 
   /* ----------------------------------------------------------
@@ -320,11 +369,6 @@
   /* ----------------------------------------------------------
      Marquee
      ---------------------------------------------------------- */
-  var track = document.getElementById("marquee-track");
-  if (track && !reducedMotion) {
-    gsap.to(track, { xPercent: -50, duration: 24, ease: "none", repeat: -1 });
-  }
-
   var toolsTrack = document.getElementById("tools-track");
   if (toolsTrack && !reducedMotion) {
     gsap.to(toolsTrack, { xPercent: -50, duration: 22, ease: "none", repeat: -1 });
@@ -378,106 +422,4 @@
     });
   }
 
-  /* ----------------------------------------------------------
-     Three.js hero — undulating dot field (light theme)
-     ---------------------------------------------------------- */
-  function initHeroCanvas() {
-    if (typeof THREE === "undefined" || reducedMotion) return;
-    var canvas = document.getElementById("hero-canvas");
-    if (!canvas) return;
-
-    var renderer;
-    try {
-      renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
-    } catch (err) {
-      return; // WebGL unavailable — hero still works without it.
-    }
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
-    camera.position.set(0, 5.5, 13);
-    camera.lookAt(0, 0, 0);
-
-    var COLS = 110;
-    var ROWS = 60;
-    var SEP = 0.42;
-    var count = COLS * ROWS;
-    var positions = new Float32Array(count * 3);
-    var colors = new Float32Array(count * 3);
-    var inkColor = new THREE.Color("#8d867a");
-    var accentColor = new THREE.Color("#ff4d24");
-    var i, x, z, idx;
-    for (i = 0; i < count; i++) {
-      x = (i % COLS) - COLS / 2;
-      z = Math.floor(i / COLS) - ROWS / 2;
-      idx = i * 3;
-      positions[idx] = x * SEP;
-      positions[idx + 1] = 0;
-      positions[idx + 2] = z * SEP;
-      // Mostly warm-grey dots with occasional accent sparks
-      var c = Math.random() < 0.045 ? accentColor : inkColor;
-      colors[idx] = c.r;
-      colors[idx + 1] = c.g;
-      colors[idx + 2] = c.b;
-    }
-    var geometry = new THREE.BufferGeometry();
-    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-
-    var material = new THREE.PointsMaterial({
-      vertexColors: true,
-      size: 0.05,
-      transparent: true,
-      opacity: 0.55,
-      depthWrite: false,
-    });
-    scene.add(new THREE.Points(geometry, material));
-
-    var mouseX = 0, mouseY = 0;
-    window.addEventListener("mousemove", function (e) {
-      mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseY = (e.clientY / window.innerHeight) * 2 - 1;
-    });
-
-    function resize() {
-      var w = canvas.clientWidth;
-      var h = canvas.clientHeight;
-      renderer.setSize(w, h, false);
-      camera.aspect = w / h;
-      camera.updateProjectionMatrix();
-    }
-    resize();
-    window.addEventListener("resize", resize);
-
-    var heroVisible = true;
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        heroVisible = entries[0].isIntersecting;
-      }).observe(canvas);
-    }
-
-    var clock = new THREE.Clock();
-    var pos = geometry.attributes.position;
-    function animate() {
-      requestAnimationFrame(animate);
-      if (!heroVisible) return;
-      var t = clock.getElapsedTime() * 0.6;
-      for (var j = 0; j < count; j++) {
-        var k = j * 3;
-        var px = pos.array[k];
-        var pz = pos.array[k + 2];
-        pos.array[k + 1] =
-          Math.sin(px * 0.45 + t) * 0.55 +
-          Math.cos(pz * 0.35 + t * 0.8) * 0.55;
-      }
-      pos.needsUpdate = true;
-      camera.position.x += (mouseX * 1.6 - camera.position.x) * 0.03;
-      camera.position.y += (5.5 - mouseY * 1.2 - camera.position.y) * 0.03;
-      camera.lookAt(0, 0, 0);
-      renderer.render(scene, camera);
-    }
-    animate();
-  }
-  initHeroCanvas();
 })();
