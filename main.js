@@ -1,5 +1,5 @@
 /* ============================================================
-   Yinka Akinbobola — Portfolio interactions
+   Yinka Akinbobola | Portfolio interactions
    ============================================================ */
 
 (function () {
@@ -24,7 +24,7 @@
   }
 
   /* ----------------------------------------------------------
-     Smooth scroll (Lenis) — optional enhancement
+     Smooth scroll (Lenis): optional enhancement
      ---------------------------------------------------------- */
   var lenis = null;
   if (typeof Lenis !== "undefined" && !reducedMotion) {
@@ -177,7 +177,7 @@
     window.addEventListener("pointerdown", skipIntro);
     window.addEventListener("keydown", skipIntro);
   } else {
-    // Case pages have no preloader — play the hero intro immediately.
+    // Case pages have no preloader, so play the hero intro immediately.
     heroIntro();
   }
 
@@ -282,7 +282,7 @@
       });
     });
 
-    // About statement — word-by-word reveal
+    // About statement: word-by-word reveal
     var statement = document.getElementById("about-statement");
     if (statement) {
       var words = statement.textContent.trim().split(/\s+/);
@@ -327,7 +327,7 @@
     });
 
     /* --------------------------------------------------------
-       Process — pinned horizontal scroll (desktop only)
+       Process: pinned horizontal scroll (desktop only)
        -------------------------------------------------------- */
     var mm = gsap.matchMedia();
     mm.add("(min-width: 900px) and (prefers-reduced-motion: no-preference)", function () {
